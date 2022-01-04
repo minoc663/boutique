@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - la boutique française
+{% endblock %}
+
+
+{% block content %}
+	<h1>Mon compte</h1>
+	Bienvenu
+	{{(app.user.firstname)}}
+	{# app permet d'acceder aux information de l'utilisateur si on fait un dump #}
+	dans votre compte.<br>
+	C'est dans cette espace que vous allez pouvoir gérer toute vos informations personnelles
+
+	{# pour utiliser la variable app.user.name , il faut que le compte soit connecté sinon la page reste null et la variable n'est pas définie #}
+	<hr>
+	<a href="{{ path('account_password') }}">Modifier mon mot de passe</a>
+
+	<br>
+	- Ajoutez mes adresses
+	<br>
+	- Mes commandes
+
+	<hr>
+
+	{# Après avoir fini de faire la page compte aller sur la page security.yaml et decommenter le controle acces du ROLE USER , Il faut remplacer profile par compte par exemple  #}
+
+
+{% endblock %}
