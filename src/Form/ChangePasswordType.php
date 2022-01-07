@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -30,8 +31,9 @@ class ChangePasswordType extends AbstractType
                 'disabled' => true,
                 'label' => 'Mon nom'
             ])
-            ->add('password', PasswordType::class, [
+            ->add('old_password', PasswordType::class, [
                 'label' => 'Mon mot de passe actuel',
+                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'Veuillez saisir votre mot de passe actuel'
                 ]
@@ -55,7 +57,10 @@ class ChangePasswordType extends AbstractType
                         'placeholder' => 'Veuillez confirmer votre nouveau mot de passe'
                     ]
                 ]
-            ]);
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => "Mettre à jour"
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
