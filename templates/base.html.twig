@@ -14,6 +14,7 @@
 
 		<!-- Bootstrap core CSS -->
 		<link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/boutiquefrancaise.css') }}">
 
 		<style>
 			.bd-placeholder-img {
@@ -38,34 +39,41 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<a class="navbar-brand" href="#">La boutique française</a>
+				<a class="navbar-brand" href="{{ path('home') }}">La boutique française</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="#">Home
-								<span class="sr-only">(current)</span>
-							</a>
+							<a class="nav-link" href="#">Nos produits</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Qui somme-nous ?</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Contact</a>
 						</li>
 
 					</ul>
-					{% if app.user %}
-						{# Quand je suis connectée#}
-						<a href="{{ path('account') }}">Mon compte</a>
-						|
-						<a href="{{ path('app_logout') }}">Déconnexion</a>
+          <div class="navbar-item-custom">
+              {% if app.user %}
+                {# Quand je suis connectée#}
+                <a href="{{ path('account') }}">Mon compte<small>({{ app.user.firstname }})</small></a>
+                |
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
 
 
-					{% else %}
+              {% else %}
 
-						<a href="{{ path('app_login') }}">Connexion</a>
+                <a href="{{ path('app_login') }}">Connexion</a>
 
-						|
-						<a href="{{ path('register') }}">Inscription</a>
+                |
+                <a href="{{ path('register') }}">Inscription</a>
 
-					{% endif %}
+              {% endif %}
+          </div>
+					
 
 				</div>
 			</nav>
@@ -138,14 +146,14 @@
 				<!-- /.container -->
 
 				<!-- FOOTER -->
-				<footer class="container">
-					<p class="float-right">
-						<a href="#">Back to top</a>
-					</p>
-					<p>&copy; 2017-2020 Company, Inc. &middot;
+				<footer class="footer-custom">
+					
+					<p>&copy; 2022 laboutiquefrançaise<br>
+          <small>la boutique 100% made in France<br>
+           
 						<a href="#">Privacy</a>
-						&middot;
-						<a href="#">Terms</a>
+					
+						<a href="#">Terms</a></small>
 					</p>
 				</footer>
 			</main>
