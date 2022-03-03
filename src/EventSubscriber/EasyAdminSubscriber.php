@@ -25,13 +25,15 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
     public function setIllustration(BeforeEntityPersistedEvent $event)
     {
         $entity = $event->getEntityInstance();
-        $tnp_name = $entity->getIllustration();
+        $tmp_name = $entity->getIllustration();
         $filename = uniqid();
-        $extension = pathinfo($_FILES['Product']['name']['illustration'], PATHINFO_EXTENSION);
+        
+        
+        $extension = pathinfo($_FILES['Product']['name']['illustration']['file'], PATHINFO_EXTENSION);
         
         $project_dir = $this->appkernel->getProjectDir();
 
-        move_uploaded_file($tnp_name,$project_dir.'/public/uploads/'. $filename.'.'.$extension);
+        move_uploaded_file($tmp_name,$project_dir.'/public/uploads/'.$filename.'.'.$extension);
 
         $entity->setIllustration($filename.'.'.$extension);
         
